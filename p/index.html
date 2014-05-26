@@ -7,7 +7,7 @@
 
 function PostsCtrlAjax($scope, $http)
 {
-$http({method: 'POST', url: 'passData.json.json'}).success(function(data) {
+$http({method: 'POST', url: 'passData.json'}).success(function(data) {
 $scope.posts = data;
 });
 }
