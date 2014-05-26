@@ -1,7 +1,7 @@
 // main.js
 var app = angular.module('myApp', ['ngGrid']);
 app.controller('MyCtrl', function($scope) {
-    $http.get('passData.json').success(function (thisdata) {
+    $http.get('https://raw.githubusercontent.com/zuxfer/root/gh-pages/p/passData.json').success(function (thisdata) {
     //Convert data to array.
     var myData =  $.parseJSON(JSON.parse(thisdata));
     $scope.myData  =  myData; 
