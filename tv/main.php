@@ -6,7 +6,7 @@ $getid =    $_REQUEST['id'];
 $getvalue = $_REQUEST['val'];
 
 
-echo "<h1>Today is ".date('l',time())."</h2>";
+echo "<h1><a style='color: #080808' href='main.php'>Today is ".date('l',time())."</a></h2>";
 $array = array(
     1 => array(
     	"tt2356777" => "True Detective",
@@ -94,24 +94,35 @@ else {
         $txt=file_get_contents($url);
 
         $data = json_decode($txt,true);
-        //foreach($data['seasons'] as $sdata){
-            //foreach($sdata["episodes"] as $edata) {
-                //echo $edata["title"]."<br>";
-                //echo $edata["date"]."<br>";
-                //echo $edata["plot"]."<br><hr>";
-            //}
-        //}
-        $p = array_find_deep($data,$d);
-        if($data['seasons'][$p[1]]['episodes'][$p[3]]["title"]){
-            echo "<h3>".$value."</h3>";
-            echo "S".($p[1]+1)."E".($p[3]+1)." - ";
-            echo $data['seasons'][$p[1]]['episodes'][$p[3]]["title"]." - ";
-            echo $data['seasons'][$p[1]]['episodes'][$p[3]]["title"];
-            echo "<hr>";
+        foreach($data['seasons'] as $sdata){
+            foreach($sdata["episodes"] as $edata) {
+                if(strtotime(date('Y-m-d',strtotime($edata['date']))) > strtotime(date('Y-m-d'))){
+                    $ntitle = $edata['title'];
+                    $ndate  = $edata['date'];
+                    $nsno   = $edata['episode'];
+                    //echo $edata["date"];
+                    break 2;
+                }
+                $ptitle = $edata['title'];
+                $pdate  = $edata['date'];
+                $psno   = $edata['episode'];
+            }
         }
-        else{
-            echo "No episodes for - <strong>".$getvalue."</strong><br>";
-        }    
+        echo "<h3>".$getvalue."</h3>";
+        echo "<table>";
+        echo "<tr><td>Previous Epsiode : </td><td>".$psno.".</td><td>".$pdate." -- </td><td>".$ptitle."</td></tr>";
+        echo "<tr><td>Next Epsiode : </td><td>".$nsno.".</td><td>".$ndate." -- </td><td>".$ntitle."</td></tr></table>";
+        // $p = array_find_deep($data,$d);
+        // if($data['seasons'][$p[1]]['episodes'][$p[3]]["title"]){
+        //     echo "<h3>".$value."</h3>";
+        //     echo "S".($p[1]+1)."E".($p[3]+1)." - ";
+        //     echo $data['seasons'][$p[1]]['episodes'][$p[3]]["title"]." - ";
+        //     echo $data['seasons'][$p[1]]['episodes'][$p[3]]["title"];
+        //     echo "<hr>";
+        // }
+        // else{
+        //     echo "No episodes for - <strong>".$getvalue."</strong><br>";
+        // }    
 }
 
 ?>
