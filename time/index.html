@@ -3,6 +3,7 @@
 <html manifest=everytimezone.manifest>
 <head>
   <title>Time Zones</title>
+  <!--
   <meta http-equiv=content-type content="text/html; charset=utf-8">
   <meta http-equiv=imagetoolbar content=false>
 
@@ -21,7 +22,7 @@
   <link rel="apple-touch-icon-precomposed" href="everytimezone-512.png">
   <link rel="shortcut icon" sizes="1024x1024" href="everytimezone-512.png">
   <link rel="icon" type="image/png" href="everytimezone-512.png">
-
+-->
   <link rel="stylesheet" href="everytimezone.css">
 </head>
 <body id=body onselectstart="return false">
@@ -30,8 +31,7 @@
   <div id=dates></div>
 
   <div id=header>
-  <h1>Every Time Zone</h1>
-  <h2>Never warp your brain with time zone math again.</h2>
+  <h1>s2tp time</h1>
 
 
   <div class=button id=select_timezones_button>
@@ -62,23 +62,11 @@
   <div id=footer>
     
 
-    <div id=design>
-        <span class=touch id=tap_to_add>works offline, tap <span id=action_icon></span> to add to home screen</span>
-    </div>
+
   </div>
   </div>
   <script src=keymaster.min.js></script>
   <script src=data.js?277></script>
   <script src=everytimezone.min.js></script>
-  <script>
-  (function() {
-    window._pa = window._pa || {};
-    var pa = document.createElement('script'); pa.type = 'text/javascript'; pa.async = true;
-    pa.src = ('https:' == document.location.protocol ? 'https:' : 'http:') + "//tag.perfectaudience.com/serve/51fbcda0dc91ad725f0000eb.js";
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(pa, s);
-  })();
-  window._pq = window._pq || [];
-  _pq.push(['track','everytimezone'])
-  </script>
 </body>
 </html>
